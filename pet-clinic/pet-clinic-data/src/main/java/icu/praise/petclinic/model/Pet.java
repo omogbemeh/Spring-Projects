@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Pet {
+public class Pet extends BaseEntity {
     private String name;
     private LocalDate birthDate;
     private Owner owner;
