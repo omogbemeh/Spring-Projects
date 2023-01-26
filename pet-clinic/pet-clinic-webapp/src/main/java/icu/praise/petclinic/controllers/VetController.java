@@ -5,11 +5,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("owners")
-public class OwnerController {
+@RequestMapping("vets")
+public class VetController {
 
     @GetMapping("")
-    public String displayOwnerPage() {
-        return "owner";
+    public String displayVetPage() {
+        return "vet";
     }
+
 }
