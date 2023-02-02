@@ -1,8 +1,6 @@
 package icu.praise.petclinic.controllers;
 
-import icu.praise.petclinic.model.Owner;
-import icu.praise.petclinic.services.map.MapService;
-import icu.praise.petclinic.services.map.OwnerMapService;
+import icu.praise.petclinic.services.map.MapImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,15 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("owners")
 public class OwnerController {
 
-    private final MapService ownerMapService;
+    private final MapImpl ownerMapServiceImpl;
 
-    public OwnerController(MapService ownerMapService) {
-        this.ownerMapService = ownerMapService;
+    public OwnerController(MapImpl ownerMapServiceImpl) {
+        this.ownerMapServiceImpl = ownerMapServiceImpl;
     }
 
     @GetMapping("")
     public String displayOwnerPage(Model model) {
-        model.addAttribute("owners", ownerMapService.findAll());
+        model.addAttribute("owners", ownerMapServiceImpl.findAll());
         return "owner";
     }
 

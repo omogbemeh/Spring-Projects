@@ -2,19 +2,17 @@ package icu.praise.petclinic.bootstrap;
 
 import icu.praise.petclinic.model.Owner;
 import icu.praise.petclinic.model.Pet;
-import icu.praise.petclinic.services.map.OwnerMapService;
-import icu.praise.petclinic.services.map.PetMapService;
+import icu.praise.petclinic.services.map.OwnerMapImpl;
+import icu.praise.petclinic.services.map.PetMapImpl;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-
-import java.util.Set;
 
 @Component
 public class DataInitializer implements CommandLineRunner {
 
-    private final OwnerMapService ownerMapService;
-    private final PetMapService petMapService;
-    public DataInitializer(OwnerMapService ownerMapService, PetMapService petMapService) {
+    private final OwnerMapImpl ownerMapService;
+    private final PetMapImpl petMapService;
+    public DataInitializer(OwnerMapImpl ownerMapService, PetMapImpl petMapService) {
         this.ownerMapService = ownerMapService;
         this.petMapService = petMapService;
     }
