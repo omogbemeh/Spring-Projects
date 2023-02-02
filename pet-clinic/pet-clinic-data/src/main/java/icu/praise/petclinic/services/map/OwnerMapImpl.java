@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Map;
 
-@Service
+@Service("ownerRepo")
 public class OwnerMapImpl extends MapImpl<Owner, Long> implements OwnerMapRepository {
 
     @Override

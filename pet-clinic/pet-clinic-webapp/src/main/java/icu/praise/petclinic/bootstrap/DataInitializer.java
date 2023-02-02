@@ -2,6 +2,8 @@ package icu.praise.petclinic.bootstrap;
 
 import icu.praise.petclinic.model.Owner;
 import icu.praise.petclinic.model.Pet;
+import icu.praise.petclinic.services.MapRepository;
+import icu.praise.petclinic.services.OwnerMapRepository;
 import icu.praise.petclinic.services.map.OwnerMapImpl;
 import icu.praise.petclinic.services.map.PetMapImpl;
 import org.springframework.boot.CommandLineRunner;
@@ -10,8 +12,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class DataInitializer implements CommandLineRunner {
 
-    private final OwnerMapImpl ownerMapService;
-    private final PetMapImpl petMapService;
+    private final OwnerMapRepository ownerMapService;
+    private final MapRepository petMapService;
     public DataInitializer(OwnerMapImpl ownerMapService, PetMapImpl petMapService) {
         this.ownerMapService = ownerMapService;
         this.petMapService = petMapService;
@@ -20,8 +22,6 @@ public class DataInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         System.out.println("Running the Bootstrap Class");
-
-
 
         Pet pet1 = new Pet();
         pet1.setId(5L);
@@ -67,8 +67,5 @@ public class DataInitializer implements CommandLineRunner {
         System.out.println(ownerMapService.count());
         System.out.println(petMapService.count());
         System.out.println(ownerMapService.findById(4L).getFirstName());
-
-//        Object[] objects = petMapService.findAll().toArray();
-//        System.out.println(objects[0]);
     }
 }

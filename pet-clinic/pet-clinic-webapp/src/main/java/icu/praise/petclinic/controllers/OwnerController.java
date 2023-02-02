@@ -1,6 +1,7 @@
 package icu.praise.petclinic.controllers;
 
 import icu.praise.petclinic.services.map.MapImpl;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +13,7 @@ public class OwnerController {
 
     private final MapImpl ownerMapServiceImpl;
 
-    public OwnerController(MapImpl ownerMapServiceImpl) {
+    public OwnerController(@Qualifier("ownerRepo") MapImpl ownerMapServiceImpl) {
         this.ownerMapServiceImpl = ownerMapServiceImpl;
     }
 
