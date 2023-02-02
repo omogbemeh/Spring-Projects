@@ -1,9 +1,7 @@
 package icu.praise.petclinic.services.map;
 
 import icu.praise.petclinic.model.Owner;
+import org.springframework.stereotype.Service;
 
-import java.util.Set;
-
-public class OwnerMapService extends MapService<Owner, Long> {
-
-}
+@Service
+public class OwnerMapService extends MapService<Owner, Long> {}

@@ -10,4 +10,5 @@ public interface MapServiceRepository<T, ID> {
     T save(ID id, T object);
     void delete(T object);
     void deleteById(ID id);
+    int count();
 }

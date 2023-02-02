@@ -32,4 +32,8 @@ public abstract class MapService<T, ID> implements MapServiceRepository<T, ID> {
     public void deleteById(Long id) {
         map.remove(id);
     }
+
+    public int count() {
+        return map.size();
+    }
 }

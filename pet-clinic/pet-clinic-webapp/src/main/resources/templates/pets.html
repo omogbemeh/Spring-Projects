@@ -5,14 +5,14 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Owners</title>
+    <title>Document</title>
 </head>
 <body>
-    <h1>These are the People that own pets</h1>
-    <p th:text="'Owners in memory'">Placeholder text</p>
+    <h1>These are the Pets in our inventory</h1>
+    <p th:text="'Pets in memory'">Placeholder text</p>
     <ul>
-        <li th:each="owner : ${owners}"
-            th:text="${owner.firstName}"></li>
+        <li th:each="pet : ${pets}"
+            th:text="${pet.name}"></li>
     </ul>
 </body>
 </html>
