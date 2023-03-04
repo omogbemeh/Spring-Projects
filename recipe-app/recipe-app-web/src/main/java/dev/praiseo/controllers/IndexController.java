@@ -10,6 +10,7 @@ public class IndexController {
 
     @GetMapping("")
     public String displayIndex() {
-        return "index";
+        return "index ";
     }
+
 }
