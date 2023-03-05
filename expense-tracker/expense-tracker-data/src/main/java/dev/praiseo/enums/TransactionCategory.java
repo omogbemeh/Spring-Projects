@@ -5,5 +5,8 @@ public enum TransactionCategory {
     SUBSCRIPTION,
     BILLS,
     RENT,
-    MISCALLEANOUS
+    ENTERTAINMENT,
+    DATE,
+    PARKING,
+    MISCELLANEOUS
 }

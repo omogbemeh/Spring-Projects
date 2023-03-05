@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-public class Transaction {
+public class Transaction extends BaseEntity{
     private String name;
     private Double amount;
     private TransactionType transactionType;

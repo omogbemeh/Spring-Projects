@@ -5,13 +5,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@SuperBuilder
-public class User extends Person{
+import java.io.Serializable;
 
-    public User(String firstName, String lastName) {
-        super(firstName, lastName);
-    }
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@SuperBuilder
+public class BaseEntity implements Serializable {
+    private Long Id;
 }
