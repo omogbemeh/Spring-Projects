@@ -1,0 +1,18 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 30px;
+}
+
+#wrapper {
+    margin: 0 auto;
+    max-width: 600px;
+    border: 2px solid #000;
+    padding: 30px;
+}
