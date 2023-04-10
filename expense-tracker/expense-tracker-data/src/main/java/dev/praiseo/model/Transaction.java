@@ -17,19 +17,6 @@ import java.util.Date;
 @Table(name = "transaction")
 @NoArgsConstructor
 public class Transaction extends BaseEntity{
-    private String title;
-    private Double amount;
-    private TransactionType transactionType;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id",
-                updatable = false,
-                insertable = false)
-    private User createdBy;
-    private String description;
-    private TransactionCategory transactionCategory;
-    @CreationTimestamp
-    private Date createdAt;
 
     /**
      * Constructor for a transaction
@@ -41,12 +28,21 @@ public class Transaction extends BaseEntity{
         this.title = title;
         this.amount = amount;
         this.transactionType = transactionType;
-//        this.createdBy = createdBy;
     }
 
+    private String title;
+    private Double amount;
+    private TransactionType transactionType;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User createdBy;
+    private String description;
+    private TransactionCategory transactionCategory;
+    @CreationTimestamp
+    private Date createdAt;
     @UpdateTimestamp
     private Date updatedAt;
-
     @Override
     public String toString() {
         return "Transaction{" +

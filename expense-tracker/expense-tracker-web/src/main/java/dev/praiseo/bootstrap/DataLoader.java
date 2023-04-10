@@ -28,32 +28,20 @@ public class DataLoader implements CommandLineRunner {
     public void run(String... args) throws Exception {
         log.info("****************************");
         log.info("Creating a user");
-        User usr = new User("Praise", "Omogbemeh", "praise_o");
+        User usr = new User("Praise", "Omogbemeh", "onosithena");
+        User usr2 = new User("Faith", "Omogbemeh", "alenosi");
         userService.saveUser(usr);
-        log.info(usr.toString());
+        userService.saveUser(usr2);
 
         log.info("****************************");
         log.info("Creating a transaction");
         Transaction transaction = new Transaction("Groceries", 33.00, TransactionType.DEBIT);
-        transactionService.saveTransaction(transaction);
+        Transaction transaction2 = new Transaction("Netflix", 9.99, TransactionType.DEBIT);
 
-//        log.info("****************************");
-//        log.info("Creating a transaction");
-//        Transaction transaction2 = new Transaction("Subscription", 213.00, TransactionType.DEBIT, usr);
-//        transactionService.saveTransaction(transaction2);
-//
-//        usr.addTransaction(transaction);
-//        userService.saveUser(usr);
-//
-//        usr.addTransaction(transaction2);
-//        userService.saveUser(usr);
-//
-//        log.info(usr.getTransactions().toString());
-//        log.info(transaction.toString());
-//
-//        log.info("Finished creating a user and a transaction");
-//
-//        log.info("Number of people in the database after creating a user is: " + userService.countUsers());
-//        log.info("Number of transactions in the database after creating a transaction is: " + transactionService.countTransactions());
+        usr.addTransaction(transaction);
+        usr2.addTransaction(transaction2);
+
+        userService.saveUser(usr);
+        userService.saveUser(usr2);
     }
 }

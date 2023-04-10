@@ -38,14 +38,9 @@ public class User extends Person{
     private Set<Transaction> transactions = new HashSet<>();
 
     public Transaction addTransaction(Transaction transaction) {
-        try {
             this.transactions.add(transaction);
             transaction.setCreatedBy(this);
             return transaction;
-        } catch (RuntimeException ex) {
-            throw new RuntimeException("Error adding transaction");
-        }
-
     }
 
     @CreationTimestamp
