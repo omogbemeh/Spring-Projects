@@ -3,13 +3,13 @@ package dev.praiseo.serviceImpl;
 import dev.praiseo.model.Transaction;
 import dev.praiseo.repository.TransactionRepository;
 import dev.praiseo.service.TransactionService;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
-@Service
+@Repository
 public class TransactionServiceImpl implements TransactionService {
 
     private final TransactionRepository repository;
@@ -24,10 +24,8 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public Transaction getATransaction(Long id) {
-        Optional<Transaction> transaction = repository.findById(id);
-        if (transaction.isPresent()) return transaction.get();
-        else throw new RuntimeException();
+    public Optional<Transaction> getATransaction(Long id) {
+        return repository.findById(id);
     }
 
     @Override

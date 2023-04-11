@@ -1,16 +1,13 @@
 package dev.praiseo.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import dev.praiseo.enums.TransactionCategory;
 import dev.praiseo.enums.TransactionType;
 import jakarta.persistence.*;
 import lombok.*;
-import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -40,7 +37,7 @@ public class Transaction extends BaseEntity{
     @ManyToOne
     @JoinColumn(name = "user_id")
     @JsonBackReference
-    private User createdBy;
+    private User user;
     private String description;
     private TransactionCategory transactionCategory;
     @CreationTimestamp

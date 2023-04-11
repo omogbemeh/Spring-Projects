@@ -7,8 +7,8 @@ import java.util.Set;
 
 
 public interface UserService {
-    Set<Transaction> getAllTransactions();
-    Transaction getTransaction(Long id);
+    Set<Transaction> getAllTransactionsByAUser();
+    Transaction getATransactionByAUser(Long id);
     User saveUser(User user);
     User updateUser(Long id, User user);
     Long countUsers();

@@ -1,11 +1,9 @@
 package dev.praiseo.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
-import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -33,7 +31,7 @@ public class User extends Person{
     @JsonIgnore
     private String password;
 
-    @OneToMany(mappedBy = "createdBy",
+    @OneToMany(mappedBy = "user",
                fetch = FetchType.EAGER,
                cascade = CascadeType.ALL,
                orphanRemoval = true)
@@ -42,7 +40,7 @@ public class User extends Person{
 
     public Transaction addTransaction(Transaction transaction) {
             this.transactions.add(transaction);
-            transaction.setCreatedBy(this);
+            transaction.setUser(this);
             return transaction;
     }
 
