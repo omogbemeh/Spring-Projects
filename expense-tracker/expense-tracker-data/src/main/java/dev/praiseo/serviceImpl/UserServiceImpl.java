@@ -19,8 +19,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Set<Transaction> getAllTransactions() {
-//        return new HashSet<>(userRepository.findByTransactions());
-        return null;
+        User usr = userRepository.findById(1L).get();
+        return new HashSet<>(usr.getTransactions());
     }
 
     @Override

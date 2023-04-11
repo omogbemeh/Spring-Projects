@@ -20,7 +20,7 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public Set<Transaction> getAllTransactions() {
-        return new HashSet<Transaction>(repository.findAll());
+        return new HashSet<>(repository.findAll());
     }
 
     @Override

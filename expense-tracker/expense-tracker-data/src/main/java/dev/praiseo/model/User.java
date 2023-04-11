@@ -1,6 +1,8 @@
 package dev.praiseo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -35,6 +37,7 @@ public class User extends Person{
                fetch = FetchType.EAGER,
                cascade = CascadeType.ALL,
                orphanRemoval = true)
+    @JsonManagedReference
     private Set<Transaction> transactions = new HashSet<>();
 
     public Transaction addTransaction(Transaction transaction) {

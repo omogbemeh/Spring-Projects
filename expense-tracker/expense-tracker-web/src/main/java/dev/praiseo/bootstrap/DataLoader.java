@@ -43,5 +43,10 @@ public class DataLoader implements CommandLineRunner {
 
         userService.saveUser(usr);
         userService.saveUser(usr2);
+
+        log.info("****************************");
+        log.info("Getting all transactions by user 1");
+        log.info(usr.getTransactions().toString());
+
     }
 }

@@ -1,5 +1,7 @@
 package dev.praiseo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import dev.praiseo.enums.TransactionCategory;
 import dev.praiseo.enums.TransactionType;
 import jakarta.persistence.*;
@@ -32,10 +34,12 @@ public class Transaction extends BaseEntity{
 
     private String title;
     private Double amount;
+    @Enumerated(EnumType.ORDINAL)
     private TransactionType transactionType;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonBackReference
     private User createdBy;
     private String description;
     private TransactionCategory transactionCategory;
