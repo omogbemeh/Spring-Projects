@@ -14,7 +14,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table
+@Table(name = "users")
 public class User extends Person{
     public User(String firstName, String lastName, String username) {
         super(firstName, lastName);

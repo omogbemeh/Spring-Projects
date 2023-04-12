@@ -45,6 +45,19 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    /**
+     * Gets a user by their id
+     * @param userId the user's id
+     * @return the found user, or throws a not found exception
+     */
+    @Override
+    public User getAUserById(Long userId) {
+        User user = userRepository
+                .findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("User with id " + userId + " not found"));
+        return user;
+    }
+
     @Override
     public Set<Transaction> getAllTransactionsByAUser() {
 //        #TODO Remove hardcoded user

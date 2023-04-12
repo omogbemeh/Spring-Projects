@@ -38,7 +38,7 @@ public class AdminController {
 
     //    #TODO Allow only admins to view this page
     @GetMapping("/get-user/{username}")
-    public ResponseEntity<User> displayAUser(@PathVariable String username) {
+    public ResponseEntity<User> displayAUserByUsername(@PathVariable String username) {
         try {
             User user = userService.getAUserByUsername(username);
             return new ResponseEntity<>(user, HttpStatus.OK);

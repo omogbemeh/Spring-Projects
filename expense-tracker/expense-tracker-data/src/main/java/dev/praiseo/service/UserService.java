@@ -10,6 +10,7 @@ import java.util.Set;
 public interface UserService {
     Set<User> getAllUsers();
     User getAUserByUsername(String username);
+    User getAUserById(Long userId);
     Set<Transaction> getAllTransactionsByAUser();
     Transaction getATransactionByAUser(Long id);
     User saveUser(User user);
