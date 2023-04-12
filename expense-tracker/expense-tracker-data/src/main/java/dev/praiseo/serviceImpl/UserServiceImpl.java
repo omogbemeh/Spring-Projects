@@ -48,8 +48,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public Set<Transaction> getAllTransactionsByAUser() {
 //        #TODO Remove hardcoded user
-        User usr = userRepository.findById(1L).orElseThrow(() -> new ResourceNotFoundException("User not Found"));
-        return new HashSet<>(usr.getTransactions());
+        try {
+            User usr = userRepository.findById(1L).orElseThrow(() -> new ResourceNotFoundException("User not Found"));
+            return transactionService.getAllTransactionsByUser(usr);
+        } catch (ResourceNotFoundException ex) {
+            throw new RuntimeException("Cannot get all transactions");
+        }
     }
 
     @Override
@@ -58,7 +62,8 @@ public class UserServiceImpl implements UserService {
         User usr = userRepository.findById(1L).get();
         Transaction transaction = transactionService.getATransaction(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Transaction Not Found"));
-        return transaction;
+        if (transaction.getUser().equals(usr)) return transaction;
+        throw new ResourceNotFoundException("Transaction with id: " + id + " not found");
     }
 
     @Override
@@ -71,16 +76,19 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
+//    TODO: allow only admins access this path
     @Override
     public Long countUsers() {
         return userRepository.count();
     }
 
+//    TODO: allow only admins access this pat
     @Override
     public void deleteUser(User user) {
 
     }
 
+//    TODO: allow only admins access this path
     @Override
     public void deleteUserById(Long id) {
 

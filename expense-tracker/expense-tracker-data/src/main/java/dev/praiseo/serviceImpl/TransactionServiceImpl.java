@@ -1,6 +1,7 @@
 package dev.praiseo.serviceImpl;
 
 import dev.praiseo.model.Transaction;
+import dev.praiseo.model.User;
 import dev.praiseo.repository.TransactionRepository;
 import dev.praiseo.service.TransactionService;
 import org.springframework.stereotype.Repository;
@@ -21,6 +22,11 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public Set<Transaction> getAllTransactions() {
         return new HashSet<>(repository.findAll());
+    }
+
+    @Override
+    public Set<Transaction> getAllTransactionsByUser(User user) {
+        return repository.findAllByUser(user);
     }
 
     @Override
