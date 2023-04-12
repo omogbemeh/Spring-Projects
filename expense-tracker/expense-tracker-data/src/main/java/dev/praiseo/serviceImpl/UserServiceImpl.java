@@ -23,6 +23,28 @@ public class UserServiceImpl implements UserService {
         this.transactionService = transactionService;
     }
 
+    /**
+     * Gets all users in the db
+     * @return
+     */
+    @Override
+    public Set<User> getAllUsers() {
+        return new HashSet<>(userRepository.findAll());
+    }
+
+    /**
+     * Gets a user by their username
+     * @param username the user's username
+     * @return a user or throws a resource not found exception
+     */
+    @Override
+    public User getAUserByUsername(String username) {
+        User user = userRepository
+                .findByUsername(username)
+                .orElseThrow(() -> new ResourceNotFoundException("User with username " + username + " not found"));
+        return user;
+    }
+
     @Override
     public Set<Transaction> getAllTransactionsByAUser() {
 //        #TODO Remove hardcoded user
