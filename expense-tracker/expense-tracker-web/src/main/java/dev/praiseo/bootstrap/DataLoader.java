@@ -26,23 +26,6 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        log.info("****************************");
-        log.info("Creating a user");
-        User usr = new User("Praise", "Omogbemeh", "onosithena");
-        User usr2 = new User("Faith", "Omogbemeh", "alenosi");
-        userService.saveUser(usr);
-        userService.saveUser(usr2);
-
-        log.info("****************************");
-        log.info("Creating a transaction");
-        Transaction transaction = new Transaction("Groceries", 33.00, TransactionType.DEBIT);
-        Transaction transaction2 = new Transaction("Netflix", 9.99, TransactionType.DEBIT);
-
-        usr.addTransaction(transaction);
-        usr2.addTransaction(transaction2);
-
-        userService.saveUser(usr);
-        userService.saveUser(usr2);
 
     }
 }

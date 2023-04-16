@@ -1,37 +1,44 @@
 package dev.praiseo.security;
 
+import dev.praiseo.model.User;
+import dev.praiseo.repository.UserRepository;
+import dev.praiseo.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        return http
+                .csrf().disable()
+                .authorizeHttpRequests().anyRequest().permitAll().and()
+                .build();
+    }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    public UserDetailsService userDetailsService(PasswordEncoder encoder) {
-        List <UserDetails> userLists = new ArrayList<>();
-        userLists.add(new User("buzz",
-                    encoder.encode("password"),
-                    Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"))));
-        userLists.add(new User("praise",
-                    encoder.encode("praise"),
-                    Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"))));
-        return new InMemoryUserDetailsManager(userLists);
+    public UserDetailsService userDetailsService(UserService userService) {
+        return username -> {
+            User user = userService.getAUserByUsername(username);
+            if (user != null) return user;
+            throw new UsernameNotFoundException("User with username " + username + " not found.");
+        };
     }
 }
