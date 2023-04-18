@@ -1,20 +1,20 @@
 package dev.praiseo.ticketmanagement.model;
 
 public class User {
-    private Integer userid;
+    private Integer userId;
     private String username;
 
-    public User(Integer userid, String username) {
-        this.userid = userid;
+    public User(Integer userId, String username) {
+        this.userId = userId;
         this.username = username;
     }
 
-    public Integer getUserid() {
-        return userid;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUserid(Integer userid) {
-        this.userid = userid;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getUsername() {
@@ -28,7 +28,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "userid='" + userid + '\'' +
+                "userid='" + userId + '\'' +
                 ", username='" + username + '\'' +
                 '}';
     }

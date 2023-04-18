@@ -22,4 +22,31 @@ public class UserServiceImpl implements UserService {
     public List<User> getAllUsers() {
         return users;
     }
+
+    @Override
+    public User getUser(Integer userId) {
+        return users.stream().filter(user -> user.getUserId() == userId)
+                             .findAny()
+                             .orElseThrow(() -> new RuntimeException("User not found"));
+    }
+
+    @Override
+    public User createUser(User user) {
+        users.add(user);
+        return user;
+    }
+
+    @Override
+    public User updateUser(Integer userId, String username) {
+        User founduser = users.stream().filter(user -> user.getUserId() == userId)
+                .findAny()
+                .orElseThrow(() -> new RuntimeException("User with ID: " + userId + " not found"));
+        founduser.setUsername(username);
+        return founduser;
+    }
+
+    @Override
+    public void deleteUser(Integer userId) {
+        users.removeIf(user -> user.getUserId() == userId);
+    }
 }

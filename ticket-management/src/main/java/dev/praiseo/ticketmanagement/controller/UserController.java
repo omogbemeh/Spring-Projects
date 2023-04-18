@@ -23,31 +23,23 @@ public class UserController {
     }
 
     @GetMapping("/{userId}")
-    public Map<String, String> getUser(@PathVariable Integer userId) {
-        Map<String, String> users = new LinkedHashMap<>();
-        users.put("result", "Getting a user with id: " + userId + "");
-        return users;
+    public User getUser(@PathVariable Integer userId) {
+        return userService.getUser(userId);
     }
 
     @PostMapping("")
-    public Map<String, String> createUser(@RequestBody User user) {
-        Map<String, String> users = new LinkedHashMap<>();
-        users.put("result", "Created a new user with id: " + user.getUserid() + "");
-        return users;
+    public User createUser(@RequestBody User user) {
+        return userService.createUser(user);
     }
 
     @PutMapping("/{userId}")
-    public Map<String, String> updateUser(@PathVariable Integer userId) {
-        Map<String, String> users = new LinkedHashMap<>();
-        users.put("result", "Updating user with id: " + userId + "");
-        return users;
+    public User updateUser(@PathVariable Integer userId, @RequestBody User updatedUser) {
+        return userService.updateUser(userId, updatedUser.getUsername());
     }
 
     @DeleteMapping("/{userId}")
-    public Map<String, String> deleteUser(@PathVariable Integer userId) {
-        Map<String, String> users = new LinkedHashMap<>();
-        users.put("result", "Deleting a user with id: " + userId + "");
-        return users;
+    public void deleteUser(@PathVariable Integer userId) {
+        userService.deleteUser(userId);
     }
 
 }

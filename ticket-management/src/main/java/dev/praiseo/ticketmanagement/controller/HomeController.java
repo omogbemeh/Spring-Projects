@@ -13,7 +13,7 @@ import java.util.Map;
 public class HomeController {
 
     @GetMapping("")
-    public Map<String, String> displayWelcom() {
+    public Map<String, String> displayWelcome() {
         Map<String, String> map = new LinkedHashMap<>();
         map.put("result", "aloha");
         return map;
