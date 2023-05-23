@@ -13,7 +13,6 @@ public interface UserService {
     User getAUserById(Long userId);
     Set<Transaction> getAllTransactionsByAUser();
     Transaction getATransactionByAUser(Long id);
-    User  saveUser(User user);
     User updateUser(Long id, User user);
     Long countUsers();
     void deleteUser(User user);

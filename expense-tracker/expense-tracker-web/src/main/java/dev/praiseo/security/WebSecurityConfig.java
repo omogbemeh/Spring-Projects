@@ -24,7 +24,11 @@ public class WebSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf().disable()
-                .authorizeHttpRequests().anyRequest().permitAll().and()
+                .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers("/transactions/**").hasAnyRole("USER ADMIN")
+                        .requestMatchers("/admin/.*").hasRole("ADMIN")
+                        .requestMatchers("/auth/login", "/auth/register").permitAll())
+                .formLogin().loginProcessingUrl("/auth/login").and()
                 .build();
     }
 
